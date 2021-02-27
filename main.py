@@ -1,16 +1,43 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def createGame():
+    """Создание игрового поля: расположение мин
+        и подсчет числа мин вокруг клеток без мин
+    """
+    pass
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def show():
+    """Функция отображения состояния текущего
+        игрового поля
+    """
+    pass
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def goPlayer():
+    """Функция для ввода пользователем координат
+        закрытой клетки игрового поля
+    """
+    pass
+
+
+def isFinish():
+    """Определение текущего состояния игры:
+        выиграли, проиграли, игра продолжается
+    """
+    pass
+
+
+def startGame():
+    """Функция запуска игры: отображается игровое поле,
+        игрок открывает любую закрытую клетку,
+        результат проверяется на наличие мины или
+        выигрышной ситуации
+    """
+    createGame()
+    while isFinish():
+        show()
+        goPlayer()
+    return "Hi"
+
+
+startGame()
+print("Игра завершена")
