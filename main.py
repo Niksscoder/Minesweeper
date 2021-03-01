@@ -1,43 +1,41 @@
 def createGame():
-    """Создание игрового поля: расположение мин
-        и подсчет числа мин вокруг клеток без мин
+    """Creation of the playing field: the location of mines
+       and counting the number of mines around the cells without mines
     """
     pass
 
 
 def show():
-    """Функция отображения состояния текущего
-        игрового поля
+    """The function displays the state of the current
+       playing field
     """
     pass
 
 
 def goPlayer():
-    """Функция для ввода пользователем координат
-        закрытой клетки игрового поля
+    """Function for user input of coordinates
+       closed cells of the playing field
     """
     pass
 
 
 def isFinish():
-    """Определение текущего состояния игры:
-        выиграли, проиграли, игра продолжается
+    """Determining the current state of the game:
+       won, lost, the game continues
     """
     pass
 
 
 def startGame():
-    """Функция запуска игры: отображается игровое поле,
-        игрок открывает любую закрытую клетку,
-        результат проверяется на наличие мины или
-        выигрышной ситуации
+    """Game launch function: the playing field is displayed,
+       the player opens any closed cell, the result is checked
+       for the presence of a mine or a winning situation
     """
-    createGame()
     while isFinish():
         show()
         goPlayer()
-    return "Hi"
+    return 0
 
 
 startGame()
-print("Игра завершена")
+print("Game over !")
