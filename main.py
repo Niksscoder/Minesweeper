@@ -60,7 +60,24 @@ def goPlayer():
     """Function for user input of coordinates
        closed cells of the playing field
     """
-    pass
+    run = True
+    while run:
+        x, y = input("Please enter (x and y): ").split()
+        if not x.isdigit() and not y.isdigit():
+            print("Please enter a valid numbers...")
+            continue
+
+        x = int(x)-1
+        y = int(y)-1
+        # выходят ли координаты за пределы поля ?
+        if x < 0 or x >= N or y < 0 or y >= N:
+            print("coordinates are out of bounds")
+            continue
+
+        run = False
+    return(x,y)
+
+
 
 
 def isFinish():
@@ -80,6 +97,7 @@ def startGame():
     PM = [0]*N*N
     createGame(PM)
     show(PM)
+    goPlayer()
     while isFinish():
         show()
         goPlayer()
