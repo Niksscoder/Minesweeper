@@ -31,7 +31,7 @@ def createGame(PM):
         j = rng.randrange(N)
         if PM[i*N+j] != 0: # if this field has already opened
             continue
-        PM[i*N+j] = -1 # а иначе запишем туда значение -1
+        PM[i*N+j] = -1 # write here -1
         n -= 1
 
     # выяесляем количество мин вокруг клетки
@@ -68,22 +68,31 @@ def goPlayer():
 
         x = int(x)-1
         y = int(y)-1
-        # выходят ли координаты за пределы поля ?
+        # Are the coordinates out of the field?
         if x < 0 or x >= N or y < 0 or y >= N:
             print("coordinates are out of bounds")
             continue
 
         run = False
-    return(x,y)
+        return(x,y)
 
 
 
 
-def isFinish():
+def isFinish(PM, P):
     """Determining the current state of the game:
        won, lost, the game continues
     """
-    pass
+    for i in range(N*N):
+        if P[i] != -2 and PM[i] < 0:
+            return -1
+    for i in range(N*N):
+        # if the cage is not open yet
+        if P[i] == -2 and PM[i] >= 0:
+            return 1
+        # if the cycle went through and nothing worked,
+        # then the player has opened all the cells
+    return -2
 
 
 def startGame():
@@ -94,14 +103,21 @@ def startGame():
     # P nad PM - it's a playing fields
     P = [-2]*N*N
     PM = [0]*N*N
+
     createGame(PM)
-    show(PM)
-    goPlayer()
-    while isFinish():
-        show()
-        goPlayer()
-    return 0
+
+    finish = isFinish(PM, P)
+    while finish> 0:
+        show(P)
+        x, y = goPlayer()
+        P[x*N+y] = PM[x*N+y]
+        finish = isFinish(PM,P)
+    return finish
 
 
-startGame()
+result = startGame()
+if result == -1:
+    print("You lose !")
+else:
+    print("You win !")
 print("Game over !")
