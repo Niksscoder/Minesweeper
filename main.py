@@ -2,7 +2,6 @@ import random
 
 N, M = (5, 10) # N -> playing field size NxN, M -> numbers of mines
 
-
 def getTotalMines(PM, i, j) -> int:
     n = 0
     for k in range(-1, 2):
